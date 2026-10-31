@@ -608,3 +608,15 @@ a:hover {
     text-align: center;
   }
 }
+
+/* Syntax highlighting for install snippets */
+.tok-comment { color: #8b949e; font-style: italic; }
+.tok-cmd     { color: #d2a8ff; }
+.tok-flag    { color: #79c0ff; }
+.tok-str,
+.tok-url     { color: #a5d6ff; }
+.tok-op      { color: #ff7b72; }
+.tok-var     { color: #ffa657; }
+
+/* Dark scrollbar for long snippet lines */
+.code-block pre { scrollbar-color: #30363d transparent; }

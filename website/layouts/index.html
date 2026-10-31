@@ -136,8 +136,8 @@
 
         <div class="snippet-panel active" id="tab-bash">
           <div class="code-block">
-            <pre><code># Download latest release for your OS and install to /usr/local/bin
-curl -sSL https://abc.stdin.top/install.sh | bash</code></pre>
+            <pre><code><span class="tok-comment"># Download latest release for your OS and install to /usr/local/bin</span>
+<span class="tok-cmd">curl</span> <span class="tok-flag">-sSL</span> <span class="tok-url">https://abc.stdin.top/install.sh</span> <span class="tok-op">|</span> <span class="tok-cmd">bash</span></code></pre>
             <button class="copy-btn" data-clipboard="curl -sSL https://abc.stdin.top/install.sh | bash">
               <i class="fa-regular fa-copy"></i> Copy
             </button>
@@ -146,9 +146,9 @@ curl -sSL https://abc.stdin.top/install.sh | bash</code></pre>
 
         <div class="snippet-panel" id="tab-powershell">
           <div class="code-block">
-            <pre><code># Download latest zip release from GitHub Releases and unpack
-Invoke-WebRequest -Uri "https://github.com/jkotra/ado-board-cli/releases/latest/download/ado-board-cli_windows_amd64.zip" -OutFile "ado-board-cli.zip"
-Expand-Archive -Path "ado-board-cli.zip" -DestinationPath "$env:LOCALAPPDATA\Programs\ado-board-cli"</code></pre>
+            <pre><code><span class="tok-comment"># Download latest zip release from GitHub Releases and unpack</span>
+<span class="tok-cmd">Invoke-WebRequest</span> <span class="tok-flag">-Uri</span> <span class="tok-str">"https://github.com/jkotra/ado-board-cli/releases/latest/download/ado-board-cli_windows_amd64.zip"</span> <span class="tok-flag">-OutFile</span> <span class="tok-str">"ado-board-cli.zip"</span>
+<span class="tok-cmd">Expand-Archive</span> <span class="tok-flag">-Path</span> <span class="tok-str">"ado-board-cli.zip"</span> <span class="tok-flag">-DestinationPath</span> <span class="tok-str">"</span><span class="tok-var">$env:LOCALAPPDATA</span><span class="tok-str">\Programs\ado-board-cli"</span></code></pre>
             <button class="copy-btn" data-clipboard="Invoke-WebRequest -Uri &quot;https://github.com/jkotra/ado-board-cli/releases/latest/download/ado-board-cli_windows_amd64.zip&quot; -OutFile &quot;ado-board-cli.zip&quot;&#10;Expand-Archive -Path &quot;ado-board-cli.zip&quot; -DestinationPath &quot;$env:LOCALAPPDATA\Programs\ado-board-cli&quot;">
               <i class="fa-regular fa-copy"></i> Copy
             </button>
