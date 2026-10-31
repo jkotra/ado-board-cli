@@ -1,0 +1,58 @@
+---
+title: "ado-board-cli"
+tagline: "A blazingly fast, keyboard-first terminal UI and MCP copilot for Azure DevOps."
+version: "Latest Release"
+aliases:
+  - /ado-board-cli-releases
+  - /ado-board-cli-releases/
+features:
+  - icon: "fa-solid fa-terminal"
+    title: "Interactive Bubble Tea TUI"
+    desc: "Inspect work item hierarchy trees, navigate sprints, and manage PBIs, tasks, and bugs with pure keyboard shortcuts."
+  - icon: "fa-solid fa-robot"
+    title: "Integrated AI Copilot Dock"
+    desc: "Built-in Google Gemini copilot with live board telemetry, automated task breakdowns, and hierarchy summarization."
+  - icon: "fa-solid fa-plug"
+    title: "Dual-Mode MCP Server"
+    desc: "Seamless Model Context Protocol server for Claude, Cursor, Windsurf, and Antigravity with live TUI IPC synchronization."
+  - icon: "fa-solid fa-tags"
+    title: "Smart Tag Inheritance & Activity"
+    desc: "Define multi-rule regex patterns to automatically inherit parent tags to child tasks, and manage work item Activity fields."
+  - icon: "fa-solid fa-chart-column"
+    title: "Real-time Rollups & Incomplete Audits"
+    desc: "Instant recursive rollup calculations for estimates, remaining work, effort, and one-key incomplete criteria audits."
+  - icon: "fa-solid fa-cube"
+    title: "Single Standalone Executable"
+    desc: "Self-contained binary for Linux, macOS, and Windows. No NodeJS, no Python, and no external runtime services required."
+downloads:
+  - os: "linux"
+    name: "Linux"
+    icon: "fa-brands fa-linux"
+    archs:
+      - label: "x86_64 (.tar.gz)"
+        arch: "amd64"
+        filename: "ado-board-cli_linux_amd64.tar.gz"
+      - label: "ARM64 (.tar.gz)"
+        arch: "arm64"
+        filename: "ado-board-cli_linux_arm64.tar.gz"
+  - os: "macos"
+    name: "macOS"
+    icon: "fa-brands fa-apple"
+    archs:
+      - label: "Apple Silicon M-Series (.tar.gz)"
+        arch: "arm64"
+        filename: "ado-board-cli_darwin_arm64.tar.gz"
+      - label: "Intel x86_64 (.tar.gz)"
+        arch: "amd64"
+        filename: "ado-board-cli_darwin_amd64.tar.gz"
+  - os: "windows"
+    name: "Windows"
+    icon: "fa-brands fa-windows"
+    archs:
+      - label: "x86_64 (.zip)"
+        arch: "amd64"
+        filename: "ado-board-cli_windows_amd64.zip"
+      - label: "ARM64 (.zip)"
+        arch: "arm64"
+        filename: "ado-board-cli_windows_arm64.zip"
+---

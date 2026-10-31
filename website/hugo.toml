@@ -1,0 +1,10 @@
+baseURL = 'https://abc.stdin.top/'
+defaultContentLanguage = 'en'
+title = 'ado-board-cli — Terminal UI & MCP Copilot for Azure DevOps'
+disableKinds = ['taxonomy', 'term', 'section']
+
+[params]
+description = 'A blazingly fast, keyboard-first terminal UI and unified Model Context Protocol (MCP) copilot for Azure DevOps.'
+releaseRepo = 'jkotra/ado-board-cli'
+githubRepo = 'https://github.com/jkotra/ado-board-cli'
+latestReleaseUrl = 'https://github.com/jkotra/ado-board-cli/releases/latest'

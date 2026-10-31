@@ -1,0 +1,80 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build Binaries & Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+          check-latest: true
+          cache: true
+
+      - name: Build All Platforms & Package
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          mkdir -p dist
+          
+          PLATFORMS=(
+            "linux/amd64/ado-board-cli"
+            "linux/arm64/ado-board-cli"
+            "darwin/amd64/ado-board-cli"
+            "darwin/arm64/ado-board-cli"
+            "windows/amd64/ado-board-cli.exe"
+            "windows/arm64/ado-board-cli.exe"
+          )
+          
+          for PLATFORM in "${PLATFORMS[@]}"; do
+            GOOS=$(echo $PLATFORM | cut -d'/' -f1)
+            GOARCH=$(echo $PLATFORM | cut -d'/' -f2)
+            BIN_NAME=$(echo $PLATFORM | cut -d'/' -f3)
+            BUILD_DIR="build_${GOOS}_${GOARCH}"
+            
+            echo "Building for $GOOS/$GOARCH..."
+            mkdir -p "$BUILD_DIR"
+            CGO_ENABLED=0 GOOS=$GOOS GOARCH=$GOARCH go build \
+              -ldflags "-s -w -X ado-board-cli/pkg/version.Version=${TAG} -X ado-board-cli/pkg/version.GitCommit=${GITHUB_SHA} -X ado-board-cli/pkg/version.BuildDate=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+              -o "$BUILD_DIR/$BIN_NAME" .
+            
+            cp README.md LICENSE "$BUILD_DIR/" 2>/dev/null || true
+            
+            if [ "$GOOS" = "windows" ]; then
+              ARCHIVE_NAME="ado-board-cli_${TAG}_${GOOS}_${GOARCH}.zip"
+              GENERIC_NAME="ado-board-cli_${GOOS}_${GOARCH}.zip"
+              (cd "$BUILD_DIR" && zip -r "../dist/$ARCHIVE_NAME" .)
+              cp "dist/$ARCHIVE_NAME" "dist/$GENERIC_NAME"
+            else
+              ARCHIVE_NAME="ado-board-cli_${TAG}_${GOOS}_${GOARCH}.tar.gz"
+              GENERIC_NAME="ado-board-cli_${GOOS}_${GOARCH}.tar.gz"
+              tar -czf "dist/$ARCHIVE_NAME" -C "$BUILD_DIR" .
+              cp "dist/$ARCHIVE_NAME" "dist/$GENERIC_NAME"
+            fi
+            rm -rf "$BUILD_DIR"
+          done
+          
+          cd dist
+          sha256sum * > checksums.txt
+          cd ..
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          files: dist/*
+          generate_release_notes: true

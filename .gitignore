@@ -1,0 +1,61 @@
+# Binaries & Executables
+ado-board-cli
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.syso
+
+# Generated icon & Windows resource assets
+assets/*.ico
+assets/*.png
+resource.syso
+versioninfo.json
+
+# Test binaries & coverage
+*.test
+*.out
+coverage.txt
+coverage.html
+
+# Database & local state
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+config.json
+
+# Environment & credentials
+.env
+.env.*
+*.local
+
+# Scratch and temporary directories
+bin/
+scratch/
+tmp/
+dist/
+build/
+builds/
+
+# IDE & Editor artifacts
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+.agents
+.claude.json
+.mcp.json
+
+# Hugo build outputs
+website/public/
+.hugo_build.lock
+**/.hugo_build.lock
+
+# Local agent configs with machine-specific paths
+.dsh/cordis.patch.yml
+.gemini/mcp_config.json

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ado-gradient" x1="256" y1="439" x2="256" y2="73" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0078d4" />
+      <stop offset="16%" stop-color="#1380da" />
+      <stop offset="53%" stop-color="#3c91e5" />
+      <stop offset="82%" stop-color="#559cec" />
+      <stop offset="100%" stop-color="#5ea0ef" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Azure DevOps Folded Ribbon -->
+  <g id="ado-ribbon" filter="url(#shadow)">
+    <!-- Main Ribbon Paths -->
+    <path
+      fill="url(#ado-gradient)"
+      d="M 476.00 141.78
+         V 363.84
+         L 366.00 438.63
+         L 195.50 387.09
+         V 438.17
+         L 98.98 333.52
+         L 380.30 351.76
+         V 151.81
+         Z
+         M 382.23 152.95
+         L 224.37 73.37
+         V 125.59
+         L 79.45 160.92
+         L 36.00 207.21
+         V 312.32
+         L 98.15 335.12
+         V 200.37
+         Z"
+    />
+  </g>
+
+  <!-- CLI Terminal Prompt (>_) -->
+  <g id="terminal-prompt" fill="#0f172a">
+    <!-- Chevron (>) -->
+    <path d="M 146.97 305.86
+             L 211.37 257.03
+             L 146.97 208.20
+             L 168.19 192.11
+             L 253.80 257.03
+             L 168.19 321.95
+             Z" />
+    <!-- Underscore Cursor (_) -->
+    <rect x="240" y="314" width="120" height="23" rx="3" ry="3" />
+  </g>
+</svg>

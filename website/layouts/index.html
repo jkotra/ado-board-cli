@@ -1,0 +1,176 @@
+{{ define "main" }}
+<div class="site-wrapper">
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <img src="{{ "images/icon.svg" | relURL }}" alt="ado-board-cli Logo" class="brand-icon">
+        <span class="brand-name">ado-board-cli</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#quick-install">Quick Install</a>
+        <a href="{{ .Site.Params.githubRepo }}" target="_blank" rel="noopener" class="nav-github-link">
+          <i class="fa-brands fa-github"></i>
+          <span>Releases</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="badge-pill">
+        <span class="badge-dot"></span>
+        <span class="badge-text">v0.05 — Terminal UI & MCP Copilot</span>
+      </div>
+      
+      <h1 class="hero-title">
+        Azure DevOps on Your Terminal. <br>
+        <span class="gradient-text">Fast, Focused & AI-Powered.</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        A keyboard-first terminal UI and unified Model Context Protocol (MCP) copilot for Azure DevOps. 
+        Track hierarchies, automate rollups, manage sprint tasks, and query with AI—all from your terminal.
+      </p>
+
+      <!-- Primary Download CTA (Auto-populated by JS based on visitor OS) -->
+      <div class="hero-cta-group">
+        <a id="primary-download-btn" href="#downloads" class="btn btn-primary">
+          <i class="fa-solid fa-download btn-icon"></i>
+          <span id="primary-download-label">Download ado-board-cli</span>
+        </a>
+        <a href="#quick-install" class="btn btn-secondary">
+          <i class="fa-solid fa-terminal btn-icon"></i> Quick Install
+        </a>
+      </div>
+
+      <!-- Screenshot Showcase -->
+      <div class="screenshot-wrapper">
+        <div class="terminal-frame">
+          <img src="{{ "images/screenshot.png" | relURL }}" alt="ado-board-cli Terminal Interface" class="hero-screenshot" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid / Bullet Points -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Built for Engineering Speed</h2>
+        <p class="section-subtitle">Everything you need to navigate Azure DevOps boards without leaving your workflow.</p>
+      </div>
+
+      <div class="features-grid">
+        {{ range .Params.features }}
+        <div class="feature-card">
+          <div class="feature-icon"><i class="{{ .icon }}"></i></div>
+          <h3 class="feature-title">{{ .title }}</h3>
+          <p class="feature-desc">{{ .desc }}</p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads Section -->
+  <section id="downloads" class="downloads-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Download ado-board-cli</h2>
+        <p class="section-subtitle">Pre-compiled standalone binaries for Linux, macOS, and Windows with zero runtime dependencies.</p>
+      </div>
+
+      <div class="downloads-grid">
+        {{ range .Params.downloads }}
+        {{ $os := .os }}
+        <div class="download-card" data-os="{{ $os }}">
+          <div class="download-card-header">
+            <span class="os-icon"><i class="{{ .icon }}"></i></span>
+            <h3 class="os-name">{{ .name }}</h3>
+          </div>
+          <p class="os-desc">Single standalone executable</p>
+          <div class="arch-list">
+            {{ range .archs }}
+            <a href="https://github.com/jkotra/ado-board-cli/releases/latest/download/{{ .filename }}" 
+               class="arch-btn download-link" 
+               data-os="{{ $os }}" 
+               data-arch="{{ .arch }}" 
+               data-filename="{{ .filename }}">
+              <span class="arch-name">{{ .label }}</span>
+              <span class="download-arrow"><i class="fa-solid fa-arrow-down"></i></span>
+            </a>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <div class="checksum-note">
+        All release packages include SHA-256 integrity signatures in <a href="https://github.com/jkotra/ado-board-cli/releases/latest/download/checksums.txt" target="_blank" rel="noopener">checksums.txt</a>.
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Install Snippet -->
+  <section id="quick-install" class="install-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Quick Install</h2>
+        <p class="section-subtitle">Download and install into your local binary PATH via curl or PowerShell.</p>
+      </div>
+
+      <div class="snippet-container">
+        <div class="snippet-tabs">
+          <button class="snippet-tab active" data-tab="bash">
+            <i class="fa-brands fa-linux"></i> Linux / <i class="fa-brands fa-apple"></i> macOS
+          </button>
+          <button class="snippet-tab" data-tab="powershell">
+            <i class="fa-brands fa-windows"></i> Windows (PowerShell)
+          </button>
+        </div>
+
+        <div class="snippet-panel active" id="tab-bash">
+          <div class="code-block">
+            <pre><code># Download latest release for your OS and install to /usr/local/bin
+curl -sSL https://abc.stdin.top/install.sh | bash</code></pre>
+            <button class="copy-btn" data-clipboard="curl -sSL https://abc.stdin.top/install.sh | bash">
+              <i class="fa-regular fa-copy"></i> Copy
+            </button>
+          </div>
+        </div>
+
+        <div class="snippet-panel" id="tab-powershell">
+          <div class="code-block">
+            <pre><code># Download latest zip release from GitHub Releases and unpack
+Invoke-WebRequest -Uri "https://github.com/jkotra/ado-board-cli/releases/latest/download/ado-board-cli_windows_amd64.zip" -OutFile "ado-board-cli.zip"
+Expand-Archive -Path "ado-board-cli.zip" -DestinationPath "$env:LOCALAPPDATA\Programs\ado-board-cli"</code></pre>
+            <button class="copy-btn" data-clipboard="Invoke-WebRequest -Uri &quot;https://github.com/jkotra/ado-board-cli/releases/latest/download/ado-board-cli_windows_amd64.zip&quot; -OutFile &quot;ado-board-cli.zip&quot;&#10;Expand-Archive -Path &quot;ado-board-cli.zip&quot; -DestinationPath &quot;$env:LOCALAPPDATA\Programs\ado-board-cli&quot;">
+              <i class="fa-regular fa-copy"></i> Copy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <span class="brand-text">ado-board-cli</span> — Open source binary release distribution.
+      </div>
+      <div class="footer-right">
+        <a href="{{ .Site.Params.githubRepo }}" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> GitHub Releases
+        </a>
+        <a href="https://dev.azure.com" target="_blank" rel="noopener">Azure DevOps</a>
+      </div>
+    </div>
+  </footer>
+</div>
+{{ end }}
